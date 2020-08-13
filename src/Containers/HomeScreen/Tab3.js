@@ -6,13 +6,13 @@ import {
   Text,
 } from 'react-native';
 
-function Tab1({ navigation }) {
+function Tab3({ navigation }) {
   return ( 
     <View style={{flex:1}}>
         <NavHeader/>
-        <Text>1</Text>
+        <Text>3</Text>
     </View>
   ); 
 };
 
-export default Tab1;
+export default Tab3;
