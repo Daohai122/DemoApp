@@ -30,7 +30,7 @@ function Tab1({ navigation }) {
               </View>
               <Text style={styles.ItemText}>Tạo đề nghị đơn thuốc</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.itemMenu}>
+            <TouchableOpacity style={styles.itemMenu} onPress={() => navigation.navigate('DsDeNghiScreen')}>
               <View style={styles.WrapIcon}>
                 <Icon name='list' type='Feather' style={styles.ItemIcon} />
               </View>
@@ -56,11 +56,11 @@ function Tab1({ navigation }) {
               </View>
               <Text style={styles.ItemText}>Tạo phiếu nhập kho</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.itemMenu}>
+            <TouchableOpacity style={styles.itemMenu} onPress={() => navigation.navigate('DsChoNhanHangScreen')}>
               <View style={styles.WrapIcon}>
                 <Icon name='list-1' type='Fontisto' style={[styles.ItemIcon,{fontSize: 20}]} />
               </View>
-              <Text style={styles.ItemText}>Danh Sách nhập kho</Text>
+              <Text style={styles.ItemText}>Danh sách chờ nhận hàng</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.itemMenu}>
               <View style={styles.WrapIcon}>

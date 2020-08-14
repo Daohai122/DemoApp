@@ -32,7 +32,7 @@ class HomeScreen extends Component {
           icon: {
             nameIcon: "home",
             typeIcon: "Octicons",
-            title: "Tab1",
+            title: "Home",
             number: 40,
           },
         },
@@ -57,12 +57,12 @@ class HomeScreen extends Component {
           },
         },
         {
-          screen: "Tab4",
+          screen: "Profile",
           type: "toi_tao",
           icon: {
             nameIcon: "user-tie",
             typeIcon: "FontAwesome5",
-            title: "Tab4",
+            title: "Profile",
             number: 40,
           },
         },
@@ -96,12 +96,12 @@ class HomeScreen extends Component {
               showLabel: false,
               style: { height: 70 }
             }}
-
+ 
           >
             <Tab.Screen name="Tab1" component={Tab1} />
             <Tab.Screen name="Tab2" component={Tab2} />
             <Tab.Screen name="Tab3" component={Tab3} />
-            <Tab.Screen name="Tab4" component={Tab4} />
+            <Tab.Screen name="Profile" component={Tab4} />
 
           </Tab.Navigator>
         </SafeAreaView>

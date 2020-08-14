@@ -7,6 +7,8 @@ import LoginScreen from "../Redux/Containers/LoginContainer";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import DrawerContent from "../Containers/DrawerScreen/DrawerScreen";
 import RequestPrescription from "../Containers/RequestPrescription/RequestPrescription";
+import DsDeNghiScreen from "../Containers/DsDeNghiScreen/DsDeNghiScreen";
+import DsChoNhanHangScreen from "../Containers/DsChoNhanHang/DsChoNhanHangScreen";
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
@@ -30,6 +32,8 @@ export default function AppNavigator() {
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
         <Stack.Screen name="HomeScreen" component={DrawerHome} />
         <Stack.Screen name="RequestPrescription" component={RequestPrescription} />
+        <Stack.Screen name="DsDeNghiScreen" component={DsDeNghiScreen} />
+        <Stack.Screen name="DsChoNhanHangScreen" component={DsChoNhanHangScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
