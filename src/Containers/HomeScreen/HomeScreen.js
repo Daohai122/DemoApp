@@ -14,8 +14,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Colors } from "../../Themes";
 import TabIcon from "../../Components/TabIcon/TabIcon";
 import Tab1 from "./Tab1";
-import Tab2 from "./Tab2";
-import Tab3 from "./Tab3";
+import RequestPrescription from "../RequestPrescription/RequestPrescription";
+import TonKhoScreen from "../TonKho/TonKhoScreen";
 import Tab4 from "./Tab4";
 
 const Tab = createBottomTabNavigator();
@@ -42,7 +42,7 @@ class HomeScreen extends Component {
           icon: {
             nameIcon: "remove",
             typeIcon: "FontAwesome",
-            title: "Tab2",
+            title: "Tạo đề nghị",
             number: 40,
           },
         },
@@ -52,7 +52,7 @@ class HomeScreen extends Component {
           icon: {
             nameIcon: "checklist",
             typeIcon: "Octicons",
-            title: "Tab3",
+            title: "Tồn kho",
             number: 40,
           },
         },
@@ -73,7 +73,7 @@ class HomeScreen extends Component {
     return (
       <View style={{ flex: 1, backgroundColor:'#fff' }}>
         {/* <StatusBar barStyle="light-content" /> */}
-        <NavHeader style={{backgroundColor:"#fff"}}/>
+        <NavHeader/>
         <SafeAreaView style={{ flex: 1 }}>
           <Tab.Navigator
             screenOptions={({ route }) => ({
@@ -99,8 +99,12 @@ class HomeScreen extends Component {
  
           >
             <Tab.Screen name="Tab1" component={Tab1} />
-            <Tab.Screen name="Tab2" component={Tab2} />
-            <Tab.Screen name="Tab3" component={Tab3} />
+            <Tab.Screen name="Tab2">
+            {(props) => <RequestPrescription {...props} tab={true} />}
+            </Tab.Screen>
+            <Tab.Screen name="Tab3">
+            {(props) => <TonKhoScreen {...props} tab={true} />}
+            </Tab.Screen>
             <Tab.Screen name="Profile" component={Tab4} />
 
           </Tab.Navigator>

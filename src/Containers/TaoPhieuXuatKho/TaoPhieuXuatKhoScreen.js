@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component } from "react";
+import React, { useState, useEffect } from "react";
 // import styles from "./DrawerStyle";
 import { NavHeader, Header } from "../../Components/Header";
 import {
@@ -12,20 +12,16 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import HomeScreen from "../HomeScreen/HomeScreen";
 
 
-class RequestPrescription extends Component  {
-    constructor(props) {
-        super(props);
-        console.log('dddddda',this.props.tab);
-
+function TaoPhieuXuatKhoScreen({ navigation }) {
+    const getSelectData =(da) => {
+        console.log('ok', da)
     }
-render() {
     return (
         <View style={{ flex: 1, backgroundColor: '#fff' }}>
             <Header
-                leftFunction={() => this.props.navigation.navigate("HomeScreen")}
-                IconLeft={this.props.tab?null:{ name: "arrow-back", type: "Ionicons" }}
-                title={"Request for prescription"}
-                NoNavHeader={this.props.tab?? false}
+                leftFunction={() => navigation.navigate("HomeScreen")}
+                IconLeft={{ name: "arrow-back", type: "Ionicons" }}
+                title={"Tạo Phiếu xuất kho"}
             />
             <View style={{ flex: 1 }}>
                 <KeyboardAwareScrollView extraScrollHeight={50}>
@@ -74,14 +70,12 @@ render() {
                         <Text>SICK ANIMAL INFORMATION</Text>
                     </View> */}
                     <View style={{marginVertical: 20,}}>
-                        <Button title='Next' onPress={() => this.props.navigation.navigate('DsSanPhamScreen')}/>
+                        <Button title='Next' onPress={() => navigation.navigate('DsSanPhamScreen')}/>
                     </View>
                 </KeyboardAwareScrollView>
             </View>
         </View>
     )
 }
-    
-}
 
-export default RequestPrescription;
+export default TaoPhieuXuatKhoScreen;

@@ -11,7 +11,10 @@ import RequestPrescription from "../Containers/RequestPrescription/RequestPrescr
 import DsSanPhamDaChonScreen from "../Containers/RequestPrescription/DsSanPhamDaChonScreen";
 import ScanBarcodeScreen from "../Containers/RequestPrescription/ScanBarcodeScreen";
 
+import TaoPhieuXuatKhoScreen from "../Containers/TaoPhieuXuatKho/TaoPhieuXuatKhoScreen";
+import DsPhieuNhapXuatKhoScreen from "../Containers/DsPhieuNhapXuatKho/DsPhieuNhapXuatKhoScreen";
 
+import BaoCaoScreen from "../Containers/BaoCao/BaoCaoScreen";
 
 import DsDeNghiScreen from "../Containers/DsDeNghiScreen/DsDeNghiScreen";
 
@@ -19,6 +22,11 @@ import DsChoNhanHangScreen from "../Containers/DsChoNhanHang/DsChoNhanHangScreen
 import ChiTietPhieuChoScreen from "../Containers/DsChoNhanHang/ChiTietPhieuChoScreen";
 
 import NhapKhoTheoDonThuocScreen from "../Containers/NhapKhoTheoDonThuoc/NhapKhoTheoDonThuocScreen";
+import TonKhoScreen from "../Containers/TonKho/TonKhoScreen";
+
+import TheKhoScreen from "../Containers/TheKho/TheKhoScreen";
+
+
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
@@ -48,9 +56,11 @@ export default function AppNavigator() {
         <Stack.Screen name="NhapKhoTheoDonThuocScreen" component={NhapKhoTheoDonThuocScreen} />
         <Stack.Screen name="DsSanPhamScreen" component={DsSanPhamDaChonScreen} />
         <Stack.Screen name="ScanBarcodeScreen" component={ScanBarcodeScreen} />
-
-        
-        
+        <Stack.Screen name="TaoPhieuXuatKhoScreen" component={TaoPhieuXuatKhoScreen} />
+        <Stack.Screen name="DsPhieuNhapXuatKhoScreen" component={DsPhieuNhapXuatKhoScreen} />
+        <Stack.Screen name="BaoCaoScreen" component={BaoCaoScreen} />
+        <Stack.Screen name="TonKhoScreen" component={TonKhoScreen} />
+        <Stack.Screen name="TheKhoScreen" component={TheKhoScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
