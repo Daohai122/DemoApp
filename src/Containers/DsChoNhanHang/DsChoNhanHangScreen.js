@@ -16,10 +16,10 @@ function DsChoNhanHangScreen({ navigation }) {
         let Content = [];
         for (let i = 0; i < 10; i++) {
 
-            Content.push(<TouchableOpacity style={styles.ItemList} key={i}>
+            Content.push(<TouchableOpacity onPress={() => navigation.navigate('ChiTietPhieuChoScreen')} style={styles.ItemList} key={i}>
                 <View>
-            <Text style={styles.ItemTitle}>Phiếu {Math.round(Math.random()* 10000000000)}</Text>
-                    <Text style={styles.ItemDes}>30/03/2020</Text>
+                    <Text style={styles.ItemTitle}>Phiếu {Math.round(Math.random() * 10000000000)}</Text>
+                    <Text style={styles.ItemDes}>{Math.round(Math.random()*29+1)}/03/2020</Text>
                 </View>
                 <Icon name='arrow-forward' type="Ionicons" style={styles.ItemIcon} />
             </TouchableOpacity>)
@@ -38,8 +38,7 @@ function DsChoNhanHangScreen({ navigation }) {
             />
             <View style={{ flex: 1 }}>
                 <ScrollView>
-                {RenderList()}
-
+                    {RenderList()}
                 </ScrollView>
             </View>
 

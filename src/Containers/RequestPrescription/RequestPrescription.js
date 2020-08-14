@@ -29,26 +29,13 @@ function RequestPrescription({ navigation }) {
                         <Text>FARM OWNER INFORMATION</Text>
                     </View>
                     <View>
-                        <SelectComponent title="Name farm" label='select' getSelectData={(da) => getSelectData(da)} data={[{id:'1', label:'Farm Tek'},{id:'2', label:'Farm Mushroom'}]}/>
-
                         <View style={{ paddingVertical: 5 }}>
                             <Item floatingLabel>
-                                <Label>Name Farm</Label>
-                                <Input />
+                                <Label>Farm name</Label>
+                                <Input value={'Nông trại Hậu Giang'}/>
                             </Item>
                         </View>
-                        <View style={{ paddingVertical: 5 }}>
-                            <Item floatingLabel>
-                                <Label>Address</Label>
-                                <Input />
-                            </Item>
-                        </View>
-                        <View style={{ paddingVertical: 5 }}>
-                            <Item floatingLabel>
-                                <Label>Phone</Label>
-                                <Input />
-                            </Item>
-                        </View>
+                
                     </View>
                     <View style={{ paddingVertical: 20, alignItems: 'center', backgroundColor: '#eaeaea', }}>
                         <Text>SICK ANIMAL INFORMATION</Text>
@@ -79,8 +66,11 @@ function RequestPrescription({ navigation }) {
                             </Item>
                         </View>
                     </View>
-                    <View>
-                        <Button title='Next' onPress={() => navigation.navigate('HomeScreen')}/>
+                    {/* <View style={{ paddingVertical: 20, alignItems: 'center', backgroundColor: '#eaeaea', }}>
+                        <Text>SICK ANIMAL INFORMATION</Text>
+                    </View> */}
+                    <View style={{marginVertical: 20,}}>
+                        <Button title='Next' onPress={() => navigation.navigate('DsSanPhamScreen')}/>
                     </View>
                 </KeyboardAwareScrollView>
             </View>

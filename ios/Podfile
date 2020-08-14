@@ -19,6 +19,7 @@ def add_flipper_pods!(versions = {})
 
   # List all transitive dependencies for FlipperKit pods
   # to avoid them being linked in Release builds
+  permissions_path = '../node_modules/react-native-permissions/ios'
   pod 'Flipper', versions['Flipper'], :configuration => 'Debug'
   pod 'Flipper-DoubleConversion', versions['DoubleConversion'], :configuration => 'Debug'
   pod 'Flipper-Folly', versions['Flipper-Folly'], :configuration => 'Debug'
@@ -33,6 +34,8 @@ def add_flipper_pods!(versions = {})
   pod 'FlipperKit/FlipperKitHighlightOverlay', versions['Flipper'], :configuration => 'Debug'
   pod 'FlipperKit/FlipperKitLayoutTextSearchable', versions['Flipper'], :configuration => 'Debug'
   pod 'FlipperKit/FlipperKitNetworkPlugin', versions['Flipper'], :configuration => 'Debug'
+  pod 'Permission-Camera', :path => "#{permissions_path}/Camera.podspec"
+
 end
 
 # Post Install processing for Flipper

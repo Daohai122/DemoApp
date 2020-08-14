@@ -6,17 +6,27 @@ import HomeScreen from "../Redux/Containers/HomeContainer";
 import LoginScreen from "../Redux/Containers/LoginContainer";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import DrawerContent from "../Containers/DrawerScreen/DrawerScreen";
+
 import RequestPrescription from "../Containers/RequestPrescription/RequestPrescription";
+import DsSanPhamDaChonScreen from "../Containers/RequestPrescription/DsSanPhamDaChonScreen";
+import ScanBarcodeScreen from "../Containers/RequestPrescription/ScanBarcodeScreen";
+
+
+
 import DsDeNghiScreen from "../Containers/DsDeNghiScreen/DsDeNghiScreen";
+
 import DsChoNhanHangScreen from "../Containers/DsChoNhanHang/DsChoNhanHangScreen";
+import ChiTietPhieuChoScreen from "../Containers/DsChoNhanHang/ChiTietPhieuChoScreen";
+
+import NhapKhoTheoDonThuocScreen from "../Containers/NhapKhoTheoDonThuoc/NhapKhoTheoDonThuocScreen";
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
 function DrawerHome() {
   return (
-  <Drawer.Navigator drawerContent={() => <DrawerContent />}   initialRouteName="HomeScreen">
-    <Drawer.Screen name="HomeScreen" component={HomeScreen} />
-  </Drawer.Navigator>
+    <Drawer.Navigator drawerContent={() => <DrawerContent />} initialRouteName="HomeScreen">
+      <Drawer.Screen name="HomeScreen" component={HomeScreen} />
+    </Drawer.Navigator>
   )
 }
 export default function AppNavigator() {
@@ -34,6 +44,13 @@ export default function AppNavigator() {
         <Stack.Screen name="RequestPrescription" component={RequestPrescription} />
         <Stack.Screen name="DsDeNghiScreen" component={DsDeNghiScreen} />
         <Stack.Screen name="DsChoNhanHangScreen" component={DsChoNhanHangScreen} />
+        <Stack.Screen name="ChiTietPhieuChoScreen" component={ChiTietPhieuChoScreen} />
+        <Stack.Screen name="NhapKhoTheoDonThuocScreen" component={NhapKhoTheoDonThuocScreen} />
+        <Stack.Screen name="DsSanPhamScreen" component={DsSanPhamDaChonScreen} />
+        <Stack.Screen name="ScanBarcodeScreen" component={ScanBarcodeScreen} />
+
+        
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

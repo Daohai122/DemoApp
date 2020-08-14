@@ -19,58 +19,68 @@ function Tab1({ navigation }) {
           <Image source={Images.ImageFarmer} style={{ width: 45, height: 45, borderRadius: 45, marginRight: 10 }} />
           <View>
             <Text style={{ fontWeight: 'bold', fontSize: UtillSize.titleFontSize }}>Mai Chi Tho</Text>
-            <Text style={{ color: Colors.mainColor }}>Farmer</Text>
+            <Text style={{ color: Colors.mainColor }}>Nông trại Hậu Giang</Text>
           </View>
         </View>
         <View style={{ marginTop: 25 }}>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
             <TouchableOpacity style={styles.itemMenu} onPress={() => navigation.navigate('RequestPrescription')}>
               <View style={styles.WrapIcon}>
-                <Icon name='text-document' type="Entypo" style={[styles.ItemIcon, {fontSize: 25}]} />
+                <Image source={Images.ImageOrderRequest} style={styles.imageIcon} />
               </View>
               <Text style={styles.ItemText}>Tạo đề nghị đơn thuốc</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.itemMenu} onPress={() => navigation.navigate('DsDeNghiScreen')}>
               <View style={styles.WrapIcon}>
-                <Icon name='list' type='Feather' style={styles.ItemIcon} />
+                <Image source={Images.ImageBusinessReport} style={styles.imageIcon} />
               </View>
               <Text style={styles.ItemText}>Danh Sách đề nghị</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.itemMenu}>
+            <TouchableOpacity style={styles.itemMenu} onPress={() => navigation.navigate('NhapKhoTheoDonThuocScreen')}>
               <View style={styles.WrapIcon}>
-                <Icon name='log-out' type="Entypo" style={[styles.ItemIcon, {fontSize: 25}]} />
+                <Image source={Images.ImageNewProduct} style={styles.imageIcon} />
               </View>
-              <Text style={styles.ItemText}>Nhập kho thuốc đã kê</Text>
+              <Text style={styles.ItemText}>Nhập kho</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.itemMenu}>
-              <View style={styles.WrapIcon}>
-                <Icon name='page-add' type="Foundation" style={[styles.ItemIcon, {fontSize: 25}]} />
-              </View>
-              <Text style={styles.ItemText}>Tạo phiếu xuất kho</Text>
-            </TouchableOpacity>
+
           </View>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 }}>
             <TouchableOpacity style={styles.itemMenu}>
               <View style={styles.WrapIcon}>
-                <Icon name='addfile' type="AntDesign" style={[styles.ItemIcon, {fontSize: 25}]} />
+                <Image source={Images.ImageReportCard} style={styles.imageIcon} />
               </View>
-              <Text style={styles.ItemText}>Tạo phiếu nhập kho</Text>
+              <Text style={styles.ItemText}>Thẻ kho</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.itemMenu} onPress={() => navigation.navigate('DsChoNhanHangScreen')}>
               <View style={styles.WrapIcon}>
-                <Icon name='list-1' type='Fontisto' style={[styles.ItemIcon,{fontSize: 20}]} />
+                <Image source={Images.ImageBusinessReport} style={styles.imageIcon} />
               </View>
               <Text style={styles.ItemText}>Danh sách chờ nhận hàng</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.itemMenu}>
               <View style={styles.WrapIcon}>
-                <Icon name='page-export-pdf' type='Foundation' style={[styles.ItemIcon, {fontSize: 25}]} />
+                <Image source={Images.ImageOrder} style={styles.imageIcon} />
               </View>
               <Text style={styles.ItemText}>Phiếu nhập, xuất kho</Text>
             </TouchableOpacity>
+
+          </View>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 }}>
             <TouchableOpacity style={styles.itemMenu}>
               <View style={styles.WrapIcon}>
-                <Icon name='book' type='FontAwesome' style={[styles.ItemIcon, {fontSize: 25}]} />
+                <Image source={Images.ImageExportStock} style={styles.imageIcon} />
+              </View>
+              <Text style={styles.ItemText}>Tạo phiếu xuất kho</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.itemMenu}>
+              <View style={styles.WrapIcon}>
+                <Image source={Images.ImageWareHouse} style={styles.imageIcon} />
+              </View>
+              <Text style={styles.ItemText}>Tồn Kho</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.itemMenu}>
+              <View style={styles.WrapIcon}>
+                <Image source={Images.ImageBusinessReport} style={styles.imageIcon} />
               </View>
               <Text style={styles.ItemText}>Báo cáo tổng hợp</Text>
             </TouchableOpacity>
@@ -83,7 +93,7 @@ function Tab1({ navigation }) {
 
 const styles = StyleSheet.create({
   itemMenu: {
-    width: '22%',
+    width: '30%',
     paddingHorizontal: 3,
     // justifyContent:'center', 
     alignItems: 'center',
@@ -102,16 +112,17 @@ const styles = StyleSheet.create({
     color: Colors.mainColor
   },
   ItemText: {
-    fontSize: 10,
+    fontSize: UtillSize.smallFontSize,
     color: Colors.ColorNhat,
     textAlign: 'center',
     textAlignVertical: 'center'
   },
   WrapIcon: {
-    height: 30,
+    height: 40,
     alignItems: 'center',
     justifyContent: "center",
-  }
+  },
+  imageIcon: { width: 40, height: 40 }
 })
 
 export default Tab1;
