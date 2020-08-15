@@ -1,12 +1,14 @@
 import React, { useState, useEffect, Component } from "react";
 // import styles from "./DrawerStyle";
 import { NavHeader, Header } from "../../Components/Header";
-import { Text, View } from "react-native";
-import { Item, Input, Label } from "native-base";
+import { Text, View, TouchableHighlight } from "react-native";
+import { Item, Input, Label, Icon } from "native-base";
 import { Button } from "../../Components/Button";
 import { SelectComponent } from "../../Components/Select";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import HomeScreen from "../HomeScreen/HomeScreen";
+import styles from "../../Components/Header/HeaderStyle";
+import { Colors } from "../../Themes";
 
 class RequestPrescription extends Component {
   constructor(props) {
@@ -74,7 +76,7 @@ class RequestPrescription extends Component {
                     </View> */}
             <View style={{ marginVertical: 20 }}>
               <Button
-                title="Next"
+                title="Tiếp"
                 onPress={() =>
                   this.props.navigation.navigate("DsSanPhamScreen")
                 }
