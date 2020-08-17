@@ -52,12 +52,12 @@ function DsPhieuNhapXuatKhoScreen({ navigation }) {
           style={styles.ItemList}
           key={i}
         >
-          <View>
-            <Text style={styles.ItemTitle}>Phiếu {data[i].orderNo}</Text>
-            <Text style={styles.ItemDes}>Ngày: {data[i].date}</Text>
-            <Text style={styles.ItemDes}>Người: {data[i].person}</Text>
-            <Text style={styles.ItemDes}>Lý do: {data[i].description}</Text>
-          </View>
+          {/* <View>
+            <Text style={styles.ItemTitle}>Phiếu {item.orderNo}</Text>
+            <Text style={styles.ItemDes}>Ngày: {item.date}</Text>
+            <Text style={styles.ItemDes}>Người: {item.person}</Text>
+            <Text style={styles.ItemDes}>Lý do: {item.description}</Text>
+          </View> */}
           <Icon name="arrow-forward" type="Ionicons" style={styles.ItemIcon} />
         </TouchableOpacity>
       );
