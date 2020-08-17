@@ -103,9 +103,10 @@ class HomeScreen extends Component {
             {/* <Tab.Screen name="Tab2">
             {(props) => <RequestPrescription {...props} tab={true} />}
             </Tab.Screen> */}
-            <Tab.Screen name="Tab3">
+            <Tab.Screen name="Tab3" component={TonKhoScreen} initialParams={{ tab: true }} />
+            {/* <Tab.Screen name="Tab3">
               {(props) => <TonKhoScreen {...props} tab={true} />}
-            </Tab.Screen>
+            </Tab.Screen> */}
             <Tab.Screen name="Profile" component={Tab4} />
           </Tab.Navigator>
         </SafeAreaView>
