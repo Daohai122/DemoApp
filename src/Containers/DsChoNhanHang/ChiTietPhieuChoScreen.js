@@ -8,7 +8,12 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
+  TouchableHighlight,
+  TextInput,
+  Dimensions
 } from "react-native";
+import Modal from "react-native-modal";
+
 import {
   List,
   ListItem,
@@ -18,8 +23,12 @@ import {
   Body,
   Icon,
 } from "native-base";
+import { Calculator } from "react-native-calculator";
+const WidthScreen = Dimensions.get("screen").width;
 
 function ChiTietPhieuChoScreen({ navigation }) {
+  const [isvisibleQuantity, setVisibleQuantity] = useState(false);
+  const [isvisible, setVisible] = useState(false);
   let dataThuoc = [
     {
       name: "Micotil 300",
@@ -212,9 +221,7 @@ function ChiTietPhieuChoScreen({ navigation }) {
             </View>
           </View>
         </ScrollView>
-        <View
-          style={{ position: "absolute", bottom: 15, alignContent: "center" }}
-        >
+        <View>
           <View style={{ paddingVertical: 15 }}>
             <Button
               title="Nhập hàng"
@@ -223,6 +230,102 @@ function ChiTietPhieuChoScreen({ navigation }) {
           </View>
         </View>
       </View>
+      <Modal isVisible={isvisibleQuantity}>
+        <View style={{ flex: 1, backgroundColor: "#fff" }}>
+          <View style={{ paddingVertical: 25 }}>
+            <ListItem avatar>
+              <Left>
+                <Thumbnail
+                  source={dataThuoc[0].image}
+                  style={{ width: 40, height: 40 }}
+                />
+              </Left>
+              <Body>
+                <Text>{dataThuoc[0].name}</Text>
+                <Text note>
+                  {dataThuoc[0].code} | {dataThuoc[0].barcode}
+                </Text>
+              </Body>
+              <Right>
+                <Text>Tồn kho: <Text style={{ color: 'red', fontWeight: 'bold', fontSize: UtillSize.titleFontSize }}>100 lọ</Text></Text>
+              </Right>
+            </ListItem>
+          </View>
+          <Calculator style={{ flex: 1 }} />
+          <View style={{ paddingVertical: 15 }}>
+            <Button title="Đồng ý" onPress={() => setVisibleQuantity(false)} />
+          </View>
+        </View>
+      </Modal>
+      <Modal isVisible={isvisible}>
+        <View style={{ flex: 1, backgroundColor: "#fff" }}>
+          <View style={styles.wrapSearch}>
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <View style={styles.IconSearch}>
+                <Icon
+                  name="search"
+                  style={{ color: Colors.ColorNhat, fontSize: 25 }}
+                />
+              </View>
+              <TextInput
+                style={{ height: 40, width: WidthScreen - 120 }}
+                placeholder="Tìm Kiếm"
+                placeholderTextColor={Colors.ColorNhat}
+              />
+            </View>
+            <TouchableHighlight
+              style={styles.IconSearch}
+              onPress={() => {
+                setVisible(false);
+                navigation.navigate("ScanBarcodeScreen");
+              }}
+            >
+              <Icon
+                name="barcode"
+                style={{ color: Colors.ColorNhat, fontSize: 25 }}
+              />
+            </TouchableHighlight>
+          </View>
+          <View style={{ flex: 1 }}>
+            <List>
+              {dataThuoc.map((item, i) => {
+                return (
+                  <ListItem
+                    avatar
+                    key={i}
+                    onPress={() => {
+                      setVisible(false);
+                      setTimeout(() => {
+                        setVisibleQuantity(true);
+                      }, 500);
+                    }}
+                  >
+                    <Left>
+                      <Thumbnail
+                        source={item.image}
+                        style={{ width: 40, height: 40 }}
+                      />
+                    </Left>
+                    <Body>
+                      <Text>{item.name}</Text>
+                      <Text note>
+                        {item.code} | {item.barcode}
+                      </Text>
+                    </Body>
+                    <Right>
+                      <Text>{item.quantity}</Text>
+                      <Text note>Lọ | Trong kho</Text>
+                    </Right>
+                  </ListItem>
+                );
+              })}
+            </List>
+          </View>
+          <View style={{ paddingVertical: 15 }}>
+            <Button title="Đồng ý" onPress={() => setVisible(false)} />
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }

@@ -12,57 +12,57 @@ import {
 } from "react-native";
 
 function DsPhieuNhapXuatKhoScreen({ navigation }) {
+  let data = [
+    {
+      orderNo: "RP0001",
+      date: "12/03/2020",
+      person: "Mai Chí Thọ",
+      description: "Nhập kho mua ngoài",
+      type: "IN",
+    },
+    {
+      orderNo: "RP0002",
+      date: "12/03/2020",
+      person: "Trần Minh Tú",
+      description: "Xuất kho chữa bệnh",
+      type: "OUT",
+    },
+    {
+      orderNo: "RP0003",
+      date: "12/03/2020",
+      person: "Trần Minh Tú",
+      description: "Xuất kho chữa bệnh",
+      type: "OUT",
+    },
+    {
+      orderNo: "RP0004",
+      date: "12/03/2020",
+      person: "Trần Minh Tú",
+      description: "Xuất kho chữa bệnh",
+      type: "OUT",
+    },
+  ];
   const RenderList = () => {
-    let Content = [];
-    let data = [
-      {
-        orderNo: "RP0001",
-        date: "12/03/2020",
-        person: "Mai Chí Thọ",
-        description: "Nhập kho mua ngoài",
-        type: "IN",
-      },
-      {
-        orderNo: "RP0002",
-        date: "12/03/2020",
-        person: "Trần Minh Tú",
-        description: "Xuất kho chữa bệnh",
-        type: "OUT",
-      },
-      {
-        orderNo: "RP0003",
-        date: "12/03/2020",
-        person: "Trần Minh Tú",
-        description: "Xuất kho chữa bệnh",
-        type: "OUT",
-      },
-      {
-        orderNo: "RP0004",
-        date: "12/03/2020",
-        person: "Trần Minh Tú",
-        description: "Xuất kho chữa bệnh",
-        type: "OUT",
-      },
-    ];
+    return(
+      data.map((item, i) => {
+        return (
+          <TouchableOpacity
+            onPress={() => navigation.navigate("ChiTietPhieuChoScreen")}
+            style={styles.ItemList}
+            key={i}
+          >
+            <View>
+              <Text style={styles.ItemTitle}>Phiếu {item.orderNo}</Text>
+              <Text style={styles.ItemDes}>Ngày: {item.date}</Text>
+              <Text style={styles.ItemDes}>Người: {item.person}</Text>
+              <Text style={styles.ItemDes}>Lý do: {item.description}</Text>
+            </View>
+            <Icon name="arrow-forward" type="Ionicons" style={styles.ItemIcon} />
+          </TouchableOpacity>)
+      })
+    )
+    
 
-    for (let i = 0; i < 5; i++) {
-      Content.push(
-        <TouchableOpacity
-          onPress={() => navigation.navigate("ChiTietPhieuChoScreen")}
-          style={styles.ItemList}
-          key={i}
-        >
-          {/* <View>
-            <Text style={styles.ItemTitle}>Phiếu {item.orderNo}</Text>
-            <Text style={styles.ItemDes}>Ngày: {item.date}</Text>
-            <Text style={styles.ItemDes}>Người: {item.person}</Text>
-            <Text style={styles.ItemDes}>Lý do: {item.description}</Text>
-          </View> */}
-          <Icon name="arrow-forward" type="Ionicons" style={styles.ItemIcon} />
-        </TouchableOpacity>
-      );
-    }
-    return Content;
   };
   return (
     <View style={{ flex: 1 }}>
@@ -74,7 +74,9 @@ function DsPhieuNhapXuatKhoScreen({ navigation }) {
         NoNavHeader
       />
       <View style={{ flex: 1 }}>
-        <ScrollView>{RenderList()}</ScrollView>
+        <ScrollView>
+          {RenderList()}
+        </ScrollView>
       </View>
     </View>
   );

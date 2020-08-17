@@ -5,8 +5,11 @@ import {
   ScrollView,
   TouchableOpacity,
   StyleSheet,
-  Modal,
+  Dimensions,
+  TextInput
 } from "react-native";
+import Modal from "react-native-modal";
+
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { Button } from "../../Components/Button";
 import { Colors, UtillSize } from "../../Themes";
@@ -25,6 +28,7 @@ import {
 } from "native-base";
 import { TouchableHighlight } from "react-native-gesture-handler";
 import { Calculator } from "react-native-calculator";
+const WidthScreen = Dimensions.get("screen").width;
 
 function TaoPhieuXuatKhoScreen({ navigation }) {
   const [isvisibleQuantity, setVisibleQuantity] = useState(false);
@@ -140,7 +144,7 @@ function TaoPhieuXuatKhoScreen({ navigation }) {
               </Text>
             </TouchableOpacity>
           </View>
-          <View style={{ paddingVertical: 15, backgroundColor: "#eaeaea" }}>
+          <View style={{ padding: 15, backgroundColor: "#eaeaea", flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
             <Text
               style={{
                 fontSize: UtillSize.titleFontSize,
@@ -149,7 +153,7 @@ function TaoPhieuXuatKhoScreen({ navigation }) {
             >
               Các sản phẩm thuốc
             </Text>
-            <View>
+            <View style={{ flexDirection: 'row', alignItems:'center' }}>
               <TouchableOpacity
                 onPress={() => setVisible(true)}
                 style={{
@@ -163,19 +167,19 @@ function TaoPhieuXuatKhoScreen({ navigation }) {
               >
                 <Icon name="add" style={{ color: "#fff" }} />
               </TouchableOpacity>
-            </View>
-            <View>
-              <TouchableHighlight
-                style={styles.IconSearch}
-                onPress={() => {
-                  navigation.navigate("ScanBarcodeScreen");
-                }}
-              >
-                <Icon
-                  name="barcode"
-                  style={{ color: Colors.backgroundColor, fontSize: 30 }}
-                />
-              </TouchableHighlight>
+              <View style={{marginLeft: 15}}>
+                <TouchableHighlight
+                  style={styles.IconSearch}
+                  onPress={() => {
+                    navigation.navigate("ScanBarcodeScreen");
+                  }}
+                >
+                  <Icon
+                    name="barcode"
+                    style={{ color: Colors.backgroundColor, fontSize: 30 }}
+                  />
+                </TouchableHighlight>
+              </View>
             </View>
           </View>
           <View style={{ flex: 1 }}>
@@ -226,9 +230,13 @@ function TaoPhieuXuatKhoScreen({ navigation }) {
         onConfirm={handleConfirm}
         onCancel={hideDatePicker}
       />
-      {/* <Modal isVisible={isvisibleQuantity}>
+      <Modal isVisible={isvisibleQuantity}>
         <View style={{ flex: 1, backgroundColor: "#fff" }}>
-          <View style={{ paddingVertical: 45 }}>
+          <View style={{ paddingVertical: 25 }}>
+          <ListItem
+                    avatar
+                    
+                  >
             <Left>
               <Thumbnail
                 source={dataThuoc[0].image}
@@ -242,15 +250,85 @@ function TaoPhieuXuatKhoScreen({ navigation }) {
               </Text>
             </Body>
             <Right>
-              <Text>100 lọ</Text>
+              <Text>Tồn kho: <Text style={{color: 'red', fontWeight:'bold', fontSize: UtillSize.titleFontSize}}>100 lọ</Text></Text>
             </Right>
+            </ListItem>
           </View>
           <Calculator style={{ flex: 1 }} />
           <View style={{ paddingVertical: 15 }}>
             <Button title="Đồng ý" onPress={() => setVisibleQuantity(false)} />
           </View>
         </View>
-      </Modal> */}
+      </Modal>
+      <Modal isVisible={isvisible}>
+        <View style={{ flex: 1, backgroundColor: "#fff" }}>
+          <View style={styles.wrapSearch}>
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <View style={styles.IconSearch}>
+                <Icon
+                  name="search"
+                  style={{ color: Colors.ColorNhat, fontSize: 25 }}
+                />
+              </View>
+              <TextInput
+                style={{ height: 40, width: WidthScreen - 120 }}
+                placeholder="Tìm Kiếm"
+                placeholderTextColor={Colors.ColorNhat}
+              />
+            </View>
+            <TouchableHighlight
+              style={styles.IconSearch}
+              onPress={() => {
+                setVisible(false);
+                navigation.navigate("ScanBarcodeScreen");
+              }}
+            >
+              <Icon
+                name="barcode"
+                style={{ color: Colors.ColorNhat, fontSize: 25 }}
+              />
+            </TouchableHighlight>
+          </View>
+          <View style={{ flex: 1 }}>
+            <List>
+              {dataThuoc.map((item, i) => {
+                return (
+                  <ListItem
+                    avatar
+                    key={i}
+                    onPress={() => {
+                      setVisible(false);
+                      setTimeout(() => {
+                        setVisibleQuantity(true);
+                      }, 500);
+                    }}
+                  >
+                    <Left>
+                      <Thumbnail
+                        source={item.image}
+                        style={{ width: 40, height: 40 }}
+                      />
+                    </Left>
+                    <Body>
+                      <Text>{item.name}</Text>
+                      <Text note>
+                        {item.code} | {item.barcode}
+                      </Text>
+                    </Body>
+                    <Right>
+                      <Text>{item.quantity}</Text>
+                      <Text note>Lọ | Trong kho</Text>
+                    </Right>
+                  </ListItem>
+                );
+              })}
+            </List>
+          </View>
+          <View style={{ paddingVertical: 15 }}>
+            <Button title="Đồng ý" onPress={() => setVisible(false)} />
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }
@@ -267,6 +345,25 @@ const styles = StyleSheet.create({
   },
   wrapListItem: {
     padding: 10,
+  },
+  IconSearch: {
+    width: 40,
+    paddingVertical: 5,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  wrapSearch: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 5,
+    backgroundColor: "#fff",
+    shadowColor: "#d4d4d4",
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 1,
+      width: 0,
+    },
   },
 });
 

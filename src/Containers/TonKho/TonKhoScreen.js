@@ -14,7 +14,7 @@ import {
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { Thumbnail, Icon } from "native-base";
 
-function TonKhoScreen(props, { navigation }) {
+function TonKhoScreen({ navigation },props ) {
   const WidthScreen = Dimensions.get("screen").width;
 
   let dataThuoc = [
@@ -84,7 +84,7 @@ function TonKhoScreen(props, { navigation }) {
   return (
     <View style={{ flex: 1 }}>
       <Header
-        leftFunction={() => this.props.navigation.navigate("HomeScreen")}
+        leftFunction={() => navigation.navigate("HomeScreen")}
         IconLeft={props.tab ? null : { name: "arrow-back", type: "Ionicons" }}
         title={"Hàng hóa trong kho"}
         NoNavHeader={props.tab ?? false}
