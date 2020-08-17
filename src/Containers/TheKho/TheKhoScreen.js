@@ -19,7 +19,7 @@ function TheKhoScreen({ navigation }) {
 
             Content.push(<TouchableOpacity style={styles.ItemList} key={i}>
                 <View>
-            <Text style={styles.ItemTitle}> Thẻ kho</Text>
+            <Text style={styles.ItemTitle}> Thẻ kho {Math.round(Math.random()*100000)}</Text>
                     {/* <Text style={styles.ItemDes}> Số lượng: {Math.round(Math.random() * 100)}</Text> */}
                     <Text style={styles.ItemDes}>Ngày lập {Math.round(Math.random() * 29 + 1)}/03/2020</Text>
                 </View>
