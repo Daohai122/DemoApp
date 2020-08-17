@@ -7,7 +7,7 @@ import {
   ScrollView,
   TouchableOpacity,
   StyleSheet,
-  Dimensions
+  Dimensions,
 } from "react-native";
 import { NavHeader, Header } from "../../Components/Header";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -36,16 +36,16 @@ class HomeScreen extends Component {
             number: 40,
           },
         },
-        {
-          screen: "Tab2",
-          type: "tu_choi",
-          icon: {
-            nameIcon: "remove",
-            typeIcon: "FontAwesome",
-            title: "Tạo đề nghị",
-            number: 40,
-          },
-        },
+        // {
+        //   screen: "Tab2",
+        //   type: "tu_choi",
+        //   icon: {
+        //     nameIcon: "remove",
+        //     typeIcon: "FontAwesome",
+        //     title: "Tạo đề nghị",
+        //     number: 40,
+        //   },
+        // },
         {
           screen: "Tab3",
           type: "da_ky",
@@ -71,14 +71,16 @@ class HomeScreen extends Component {
   }
   render() {
     return (
-      <View style={{ flex: 1, backgroundColor:'#fff' }}>
+      <View style={{ flex: 1, backgroundColor: "#fff" }}>
         {/* <StatusBar barStyle="light-content" /> */}
-        <NavHeader/>
+        <NavHeader />
         <SafeAreaView style={{ flex: 1 }}>
           <Tab.Navigator
             screenOptions={({ route }) => ({
               tabBarIcon: ({ focused, color, size }) => {
-                const configTabIcon = this.state.configTab.find(e => e.screen == route.name);
+                const configTabIcon = this.state.configTab.find(
+                  (e) => e.screen == route.name
+                );
                 return (
                   <TabIcon
                     content={{
@@ -94,19 +96,17 @@ class HomeScreen extends Component {
             })}
             tabBarOptions={{
               showLabel: false,
-              style: { height: 70 }
+              style: { height: 70 },
             }}
- 
           >
             <Tab.Screen name="Tab1" component={Tab1} />
-            <Tab.Screen name="Tab2">
+            {/* <Tab.Screen name="Tab2">
             {(props) => <RequestPrescription {...props} tab={true} />}
-            </Tab.Screen>
+            </Tab.Screen> */}
             <Tab.Screen name="Tab3">
-            {(props) => <TonKhoScreen {...props} tab={true} />}
+              {(props) => <TonKhoScreen {...props} tab={true} />}
             </Tab.Screen>
             <Tab.Screen name="Profile" component={Tab4} />
-
           </Tab.Navigator>
         </SafeAreaView>
       </View>
