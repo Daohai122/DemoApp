@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 
-function TonKhoScreen(props,{ navigation }) {
+function TonKhoScreen({ navigation },props) {
     let dataThuoc = [
         {
             name: 'Micotil 300',
@@ -82,7 +82,7 @@ function TonKhoScreen(props,{ navigation }) {
     return (
         <View style={{ flex: 1 }}>
             <Header
-                leftFunction={() => this.props.navigation.navigate("HomeScreen")}
+                leftFunction={() => navigation.navigate("HomeScreen")}
                 IconLeft={props.tab?null:{ name: "arrow-back", type: "Ionicons" }}
                 title={"Danh sách tồn kho"}
                 NoNavHeader={props.tab?? false}

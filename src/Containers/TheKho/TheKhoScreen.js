@@ -13,13 +13,13 @@ import {
 
 function TheKhoScreen({ navigation }) {
     const RenderList = () => {
-        const arrVat = ['Mèo', 'Chó', 'Lợn', 'Gà', 'Bò', 'Trâu', 'Rắn', 'Dế', 'Ếch', 'Tôm']
+        // const arrVat = ['Mèo', 'Chó', 'Lợn', 'Gà', 'Bò', 'Trâu', 'Rắn', 'Dế', 'Ếch', 'Tôm']
         let Content = [];
         for (let i = 0; i < 10; i++) {
 
             Content.push(<TouchableOpacity style={styles.ItemList} key={i}>
                 <View>
-                    <Text style={styles.ItemTitle}>Đơn thuốc dành cho đàn {arrVat[i]}</Text>
+            <Text style={styles.ItemTitle}> Thẻ kho</Text>
                     {/* <Text style={styles.ItemDes}> Số lượng: {Math.round(Math.random() * 100)}</Text> */}
                     <Text style={styles.ItemDes}>Ngày lập {Math.round(Math.random() * 29 + 1)}/03/2020</Text>
                 </View>
