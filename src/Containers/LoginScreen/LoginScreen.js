@@ -11,9 +11,8 @@ import { Input } from "react-native-elements";
 import { Icon } from "native-base";
 import { NavHeader } from "../../Components/Header";
 import { StackActions } from "@react-navigation/native";
-import { ShowMessage } from "../../Components/Message";
-import mushroom from "../../Api/CallApi";
-import { UtillSize } from "../../Themes";
+
+import { DataShare } from "../DataShare";
 import * as Animatable from 'react-native-animatable';
 function LoginScreen({ navigation }) {
   const mesLoginFail = 'Tài khoản hoặc mật khẩu không chính xác!';
@@ -45,6 +44,9 @@ function LoginScreen({ navigation }) {
     };
   }, []);
   const handerChange = (value, name) => {
+    if (name == 'UserName' && value.indexOf('quanly' != -1)) {
+      DataShare.permission = 'manage'
+    };
     ChangeLogin((prevState) => ({
       ...prevState,
       [name]: value,

@@ -3,6 +3,7 @@ import { Colors, UtillSize } from "../../Themes";
 import { Images } from "../../Themes";
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { stringsLanguage } from "../../Language";
+import { DataShare } from "../DataShare";
 stringsLanguage.setLanguage('vn');
 function Tab1({ navigation }) {
   const listMenu = [
@@ -12,7 +13,7 @@ function Tab1({ navigation }) {
       func: () => {
         navigation.navigate("RequestPrescription")
       },
-      permission: 'farmer',
+      permission: 'farmer, manage',
     },
     {
       icon: Images.ImageRequestList,
@@ -108,20 +109,24 @@ function Tab1({ navigation }) {
             style={{ flexDirection: 'row', flexWrap: 'wrap' }}
           >
             {listMenu.map((item, i) => {
-              return (
-                <TouchableOpacity key={i}
-                  style={[styles.itemMenu, (i + 1) % 3 == 0 ? { marginRight: 0 } : {}]}
-                  onPress={() => navigation.navigate("RequestPrescription")}
-                >
-                  <View style={styles.WrapIcon}>
-                    <Image
-                      source={item.icon}
-                      style={styles.imageIcon}
-                    />
-                  </View>
-                  <Text style={styles.ItemText}>{item.name}</Text>
-                </TouchableOpacity>
-              )
+              if(item.permission.indexOf(DataShare.permission) !== -1) {
+                return (
+                
+                  <TouchableOpacity key={i}
+                    style={[styles.itemMenu, (i + 1) % 3 == 0 ? { marginRight: 0 } : {}]}
+                    onPress={() => navigation.navigate("RequestPrescription")}
+                  >
+                    <View style={styles.WrapIcon}>
+                      <Image
+                        source={item.icon}
+                        style={styles.imageIcon}
+                      />
+                    </View>
+                    <Text style={styles.ItemText}>{item.name}</Text>
+                  </TouchableOpacity>
+                )
+              } 
+              
             })}
           </View>
         </View>
