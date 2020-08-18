@@ -1,84 +1,84 @@
 import React, { useEffect, useState } from "react";
-import { Colors, UtillSize } from "../../Themes";
-import { Images } from "../../Themes";
+import { Colors, UtillSize, Images } from "../../Themes";
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { stringsLanguage } from "../../Language";
 import { DataShare } from "../DataShare";
-stringsLanguage.setLanguage('vn');
+stringsLanguage.setLanguage("vn");
 function Tab1({ navigation }) {
   const listMenu = [
     {
       icon: Images.ImageOrderRequest,
       name: stringsLanguage.de_ngi_don_thuoc,
       func: () => {
-        navigation.navigate("RequestPrescription")
+        navigation.navigate("RequestPrescription");
       },
-      permission: 'farmer, manage',
+      permission: "farmer, manage",
     },
     {
       icon: Images.ImageRequestList,
       name: stringsLanguage.danh_sach_de_nghi,
       func: () => {
-        navigation.navigate("DsDeNghiScreen")
+        navigation.navigate("DsDeNghiScreen");
       },
-      permission: 'farmer',
+      permission: "farmer",
     },
     {
       icon: Images.ImageDelivery,
       name: stringsLanguage.hang_cho_ve_kho,
       func: () => {
-        navigation.navigate("DsChoNhanHangScreen")
+        navigation.navigate("DsChoNhanHangScreen");
       },
-      permission: 'farmer',
+      permission: "farmer",
     },
     {
       icon: Images.ImageNewProduct,
       name: stringsLanguage.nhap_kho,
       func: () => {
-        navigation.navigate("NhapKhoTheoDonThuocScreen")
+        navigation.navigate("NhapKhoTheoDonThuocScreen");
       },
-      permission: 'farmer',
+      permission: "farmer",
     },
     {
       icon: Images.ImageExportStock,
       name: stringsLanguage.xuat_kho,
       func: () => {
-        navigation.navigate("TaoPhieuXuatKhoScreen")
+        navigation.navigate("TaoPhieuXuatKhoScreen");
       },
-      permission: 'farmer',
+      permission: "farmer",
     },
     {
       icon: Images.ImageOrder,
       name: stringsLanguage.phieu_nhap_xuat,
       func: () => {
-        navigation.navigate("DsPhieuNhapXuatKhoScreen")
+        navigation.navigate("DsPhieuNhapXuatKhoScreen");
       },
-      permission: 'farmer',
+      permission: "farmer",
     },
     {
       icon: Images.ImageReportCard,
       name: stringsLanguage.the_kho,
       func: () => {
-        navigation.navigate("TheKhoScreen")
+        navigation.navigate("TheKhoScreen");
       },
-      permission: 'farmer',
-    }, {
+      permission: "farmer",
+    },
+    {
       icon: Images.ImageWareHouse,
       name: stringsLanguage.ton_kho,
       func: () => {
-        navigation.navigate("TonKhoScreen")
+        navigation.navigate("TonKhoScreen");
       },
-      permission: 'farmer',
+      permission: "farmer",
     },
     {
       icon: Images.ImageBusinessReport,
       name: stringsLanguage.bao_cao,
       func: () => {
-        navigation.navigate("BaoCaoScreen")
+        navigation.navigate("BaoCaoScreen");
       },
-      permission: 'farmer',
-    }
-  ]
+      permission: "farmer",
+    },
+  ];
   return (
     <View style={{ flex: 1, backgroundColor: "#fff" }}>
       <View style={{ marginHorizontal: 10, marginTop: 10 }}>
@@ -105,28 +105,25 @@ function Tab1({ navigation }) {
           </View>
         </View>
         <View style={{ marginTop: 25 }}>
-          <View
-            style={{ flexDirection: 'row', flexWrap: 'wrap' }}
-          >
+          <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
             {listMenu.map((item, i) => {
-              if(item.permission.indexOf(DataShare.permission) !== -1) {
+              if (item.permission.indexOf(DataShare.permission) !== -1) {
                 return (
-                
-                  <TouchableOpacity key={i}
-                    style={[styles.itemMenu, (i + 1) % 3 == 0 ? { marginRight: 0 } : {}]}
-                    onPress={() => navigation.navigate("RequestPrescription")}
+                  <TouchableOpacity
+                    key={i}
+                    style={[
+                      styles.itemMenu,
+                      (i + 1) % 3 == 0 ? { marginRight: 0 } : {},
+                    ]}
+                    onPress={() => item.func()}
                   >
                     <View style={styles.WrapIcon}>
-                      <Image
-                        source={item.icon}
-                        style={styles.imageIcon}
-                      />
+                      <Image source={item.icon} style={styles.imageIcon} />
                     </View>
                     <Text style={styles.ItemText}>{item.name}</Text>
                   </TouchableOpacity>
-                )
-              } 
-              
+                );
+              }
             })}
           </View>
         </View>
@@ -150,8 +147,8 @@ const styles = StyleSheet.create({
       height: 1,
       width: 0,
     },
-    marginRight: '5%',
-    marginTop: 15
+    marginRight: "5%",
+    marginTop: 15,
   },
   ItemIcon: {
     color: Colors.mainColor,

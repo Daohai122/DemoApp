@@ -1,18 +1,13 @@
 import React, { Component } from "react";
-import {
-  SafeAreaView,
-
-  View,
-  StyleSheet,
-} from "react-native";
+import { SafeAreaView, View, StyleSheet } from "react-native";
 import { NavHeader } from "../../Components/Header";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Colors } from "../../Themes";
 import TabIcon from "../../Components/TabIcon/TabIcon";
 import Tab1 from "./Tab1";
+import Tab2 from "./Tab2";
 import TonKhoScreen from "../TonKho/TonKhoScreen";
 import Tab4 from "./Tab4";
-import Tab2 from "./Tab2";
 
 const Tab = createBottomTabNavigator();
 
@@ -96,8 +91,16 @@ class HomeScreen extends Component {
             }}
           >
             <Tab.Screen name="Tab1" component={Tab1} />
-            <Tab.Screen name="Tab2" component={Tab2} initialParams={{ tab: true }} />
-            <Tab.Screen name="Tab3" component={TonKhoScreen} initialParams={{ tab: true }} />
+            <Tab.Screen
+              name="Tab2"
+              component={Tab2}
+              initialParams={{ tab: true }}
+            />
+            <Tab.Screen
+              name="Tab3"
+              component={TonKhoScreen}
+              initialParams={{ tab: true }}
+            />
             {/* <Tab.Screen name="Tab3">
               {(props) => <TonKhoScreen {...props} tab={true} />}
             </Tab.Screen> */}
