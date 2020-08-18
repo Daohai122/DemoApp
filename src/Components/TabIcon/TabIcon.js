@@ -27,7 +27,7 @@ export default class TabIcon extends Component {
             style={{color: color, fontSize: 30}}
           />
           <View style={{position: 'absolute', right: -10, top: -3}}>
-            {/* <Text style={{fontSize: 12, color: color}}>{content.number}</Text> */}
+            <Text style={{fontSize: 12, color: color}}>{content.number??''}</Text>
           </View>
         </View>
         <Text style={{color: color}}>{content.title}</Text>

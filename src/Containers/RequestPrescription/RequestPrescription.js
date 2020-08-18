@@ -1,14 +1,12 @@
 import React, { useState, useEffect, Component } from "react";
 // import styles from "./DrawerStyle";
-import { NavHeader, Header } from "../../Components/Header";
-import { Text, View, TouchableHighlight } from "react-native";
-import { Item, Input, Label, Icon } from "native-base";
+import {  Header } from "../../Components/Header";
+import { Text, View } from "react-native";
+import { Item, Input, Label } from "native-base";
 import { Button } from "../../Components/Button";
-import { SelectComponent } from "../../Components/Select";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import HomeScreen from "../HomeScreen/HomeScreen";
-import styles from "../../Components/Header/HeaderStyle";
-import { Colors } from "../../Themes";
+import { stringsLanguage } from "../../Language";
+
 
 class RequestPrescription extends Component {
   constructor(props) {
@@ -23,7 +21,7 @@ class RequestPrescription extends Component {
           IconLeft={
             this.props.tab ? null : { name: "arrow-back", type: "Ionicons" }
           }
-          title={"Yêu cầu đơn thuốc"}
+          title={stringsLanguage.yeu_cau_don_thuoc}
           NoNavHeader={this.props.tab ?? false}
         />
         <View style={{ flex: 1 }}>
@@ -31,7 +29,7 @@ class RequestPrescription extends Component {
             <View>
               <View style={{ paddingVertical: 5 }}>
                 <Item floatingLabel>
-                  <Label>Tên trang trại</Label>
+                  <Label>{stringsLanguage.ten_trang_trai}</Label>
                   <Input value={"Nông trại Hậu Giang"} />
                 </Item>
               </View>
@@ -43,24 +41,24 @@ class RequestPrescription extends Component {
                 backgroundColor: "#eaeaea",
               }}
             >
-              <Text>Thông tin đàn động vật</Text>
+              <Text>{stringsLanguage.thong_tin_dan_dong_vat}</Text>
             </View>
             <View>
               <View style={{ paddingVertical: 5 }}>
                 <Item floatingLabel>
-                  <Label>Mô tả</Label>
+                  <Label>{stringsLanguage.mo_ta}</Label>
                   <Input />
                 </Item>
               </View>
               <View style={{ paddingVertical: 5 }}>
                 <Item floatingLabel>
-                  <Label>Số lượng</Label>
+                  <Label>{stringsLanguage.so_luong}</Label>
                   <Input />
                 </Item>
               </View>
               <View style={{ paddingVertical: 5 }}>
                 <Item floatingLabel>
-                  <Label>Tuổi</Label>
+                  <Label>{stringsLanguage.tuoi}</Label>
                   <Input />
                 </Item>
               </View>
@@ -76,7 +74,7 @@ class RequestPrescription extends Component {
                     </View> */}
             <View style={{ marginVertical: 20 }}>
               <Button
-                title="Tiếp"
+                title={stringsLanguage.tiep}
                 onPress={() =>
                   this.props.navigation.navigate("DsSanPhamScreen")
                 }

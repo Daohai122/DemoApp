@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { NavHeader, Header as HeaderBar } from "../../Components/Header";
 import Modal from "react-native-modal";
 import { Button } from "../../Components/Button";
+import { stringsLanguage } from "../../Language";
+
 import {
   View,
   // Text,
@@ -11,7 +13,7 @@ import {
   Image,
   TextInput,
   Dimensions,
-  TouchableOpacity,
+  TouchableOpacity
 } from "react-native";
 import { Images, Colors, UtillSize } from "../../Themes";
 import {
@@ -166,7 +168,7 @@ function DsSanPhamDaChonScreen({ navigation }) {
         <HeaderBar
           leftFunction={() => navigation.goBack()}
           IconLeft={{ name: "arrow-back", type: "Ionicons" }}
-          title={"Sản phẩm"}
+          title={stringsLanguage.san_pham}
         />
       </View>
 
@@ -199,7 +201,7 @@ function DsSanPhamDaChonScreen({ navigation }) {
                   </Body>
                   <Right>
                     <Text>{item.quantity}</Text>
-                    <Text note>Lọ</Text>
+                    <Text note>{stringsLanguage.lo}</Text>
                   </Right>
                 </ListItem>
               );
@@ -297,42 +299,44 @@ function DsSanPhamDaChonScreen({ navigation }) {
             </TouchableHighlight>
           </View>
           <View style={{ flex: 1 }}>
-            <List>
-              {dataThuoc.map((item, i) => {
-                return (
-                  <ListItem
-                    avatar
-                    key={i}
-                    onPress={() => {
-                      setVisible(false);
-                      setTimeout(() => {
-                        setVisibleQuantity(true);
-                      }, 500);
-                    }}
-                  >
-                    <Left>
-                      <Thumbnail
-                        source={item.image}
-                        style={{ width: 40, height: 40 }}
-                      />
-                    </Left>
-                    <Body>
-                      <Text>{item.name}</Text>
-                      <Text note>
-                        {item.code} | {item.barcode}
-                      </Text>
-                    </Body>
-                    <Right>
-                      <Text>{item.quantity}</Text>
-                      <Text note>Lọ | Trong kho</Text>
-                    </Right>
-                  </ListItem>
-                );
-              })}
-            </List>
+            <ScrollView>
+              <List>
+                {dataThuoc.map((item, i) => {
+                  return (
+                    <ListItem
+                      avatar
+                      key={i}
+                      onPress={() => {
+                        setVisible(false);
+                        setTimeout(() => {
+                          setVisibleQuantity(true);
+                        }, 500);
+                      }}
+                    >
+                      <Left>
+                        <Thumbnail
+                          source={item.image}
+                          style={{ width: 40, height: 40 }}
+                        />
+                      </Left>
+                      <Body>
+                        <Text>{item.name}</Text>
+                        <Text note>
+                          {item.code} | {item.barcode}
+                        </Text>
+                      </Body>
+                      <Right>
+                        <Text>{item.quantity}</Text>
+                        <Text note>{stringsLanguage.lo} | {stringsLanguage.trong_kho}</Text>
+                      </Right>
+                    </ListItem>
+                  );
+                })}
+              </List>
+            </ScrollView>
           </View>
           <View style={{ paddingVertical: 15 }}>
-            <Button title="Đồng ý" onPress={() => setVisible(false)} />
+            <Button title={stringsLanguage.dong_y} onPress={() => setVisible(false)} />
           </View>
         </View>
       </Modal>
