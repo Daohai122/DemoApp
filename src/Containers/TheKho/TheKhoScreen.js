@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { NavHeader, Header } from "../../Components/Header";
 import { Colors, UtillSize } from "../../Themes";
-import { Icon } from "native-base";
+import { Icon, Left, Body, ListItem, Text, Right, List } from "native-base";
 import {
   View,
-  Text,
   TouchableOpacity,
   ScrollView,
   StyleSheet,
   TextInput,
   Dimensions,
 } from "react-native";
-
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 function TheKhoScreen({ navigation }) {
   const WidthScreen = Dimensions.get("screen").width;
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
@@ -28,34 +27,110 @@ function TheKhoScreen({ navigation }) {
     // console.warn("A date has been picked: ", date);
     hideDatePicker();
   };
+
   const RenderList = () => {
-    // const arrVat = ['Mèo', 'Chó', 'Lợn', 'Gà', 'Bò', 'Trâu', 'Rắn', 'Dế', 'Ếch', 'Tôm']
-    let Content = [];
-    for (let i = 0; i < 10; i++) {
-      Content.push(
-        <TouchableOpacity style={styles.ItemList} key={i}>
-          <View>
-            <Text style={styles.ItemTitle}>
-              {" "}
-              Thẻ kho {Math.round(Math.random() * 100000)}
+    return dataTheKho.map((item, i) => {
+      return (
+        <ListItem noBorder={true}>
+          <Icon
+            style={[
+              styles.ItemIcon,
+              { alignSelf: "flex-start" },
+              item.type == 2 ? { color: "green" } : { color: "red" },
+            ]}
+            name={item.icon.name}
+            type={item.icon.type}
+          />
+          <Body>
+            <Text>{item.billName}</Text>
+            <Text note>
+              {item.type == 2 ? "Ngày xuất" : "Ngày nhập"}: {item.date}
             </Text>
-            {/* <Text style={styles.ItemDes}> Số lượng: {Math.round(Math.random() * 100)}</Text> */}
-            <Text style={styles.ItemDes}>
-              Ngày lập {Math.round(Math.random() * 29 + 1)}/03/2020
+            <Text note> Người ký: {item.signer}</Text>
+          </Body>
+          <Right style={{ alignSelf: "flex-start" }}>
+            <Text
+              style={item.type == 2 ? { color: "green" } : { color: "red" }}
+            >
+              {item.type == 2 ? "-" : "+"} {item.quantity}
             </Text>
-          </View>
-          <Icon name="arrow-forward" type="Ionicons" style={styles.ItemIcon} />
-        </TouchableOpacity>
+          </Right>
+        </ListItem>
       );
-    }
-    return Content;
+    });
   };
+  let dataTheKho = [
+    {
+      billName: "PXK-0000001",
+      type: 1, // nhập
+      signer: "Nguyễn Văn A",
+      date: "20/8/2020",
+      icon: { name: "arrow-up", type: "Entypo" },
+      quantity: 100,
+    },
+    {
+      billName: "PNK-0000002",
+      type: 2, // xuất
+      signer: "Nguyễn Văn A",
+      date: "23/8/2020",
+      icon: { name: "arrow-down", type: "Entypo" },
+      quantity: 102,
+    },
+    {
+      billName: "PXK-0000001",
+      type: 1, // nhập
+      signer: "Nguyễn Văn A",
+      date: "20/8/2020",
+      icon: { name: "arrow-up", type: "Entypo" },
+      quantity: 100,
+    },
+    {
+      billName: "PNK-0000002",
+      type: 2, // xuất
+      signer: "Nguyễn Văn A",
+      date: "23/8/2020",
+      icon: { name: "arrow-down", type: "Entypo" },
+      quantity: 102,
+    },
+    {
+      billName: "PXK-0000001",
+      type: 1, // nhập
+      signer: "Nguyễn Văn A",
+      date: "20/8/2020",
+      icon: { name: "arrow-up", type: "Entypo" },
+      quantity: 100,
+    },
+    {
+      billName: "PNK-0000002",
+      type: 2, // xuất
+      signer: "Nguyễn Văn A",
+      date: "23/8/2020",
+      icon: { name: "arrow-down", type: "Entypo" },
+      quantity: 102,
+    },
+    {
+      billName: "PXK-0000001",
+      type: 1, // nhập
+      signer: "Nguyễn Văn A",
+      date: "20/8/2020",
+      icon: { name: "arrow-up", type: "Entypo" },
+      quantity: 100,
+    },
+    {
+      billName: "PNK-0000002",
+      type: 2, // xuất
+      signer: "Nguyễn Văn A",
+      date: "23/8/2020",
+      icon: { name: "arrow-down", type: "Entypo" },
+      quantity: 102,
+    },
+  ];
   return (
     <View style={{ flex: 1 }}>
       <Header
-        leftFunction={() => navigation.navigate("HomeScreen")}
+        leftFunction={() => navigation.goBack()}
         IconLeft={{ name: "arrow-back", type: "Ionicons" }}
-        title={"Thẻ kho"}
+        title={"Micotil 300"}
       />
       <View style={styles.wrapSearch}>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -86,8 +161,16 @@ function TheKhoScreen({ navigation }) {
       </View>
 
       <View style={{ flex: 1 }}>
-        <ScrollView>{RenderList()}</ScrollView>
+        <ScrollView style={styles.listItem}>
+          <List>{RenderList()}</List>
+        </ScrollView>
       </View>
+      <DateTimePickerModal
+        isVisible={isDatePickerVisible}
+        mode="date"
+        onConfirm={handleConfirm}
+        onCancel={hideDatePicker}
+      />
     </View>
   );
 }
@@ -119,6 +202,8 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   ItemIcon: {
+    margin: 0,
+    margin: 0,
     fontSize: 25,
     color: Colors.mainColor,
   },
@@ -164,6 +249,9 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     height: 35,
+  },
+  listItem: {
+    backgroundColor: "white",
   },
 });
 export default TheKhoScreen;

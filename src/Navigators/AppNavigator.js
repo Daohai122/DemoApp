@@ -9,6 +9,7 @@ import DrawerContent from "../Containers/DrawerScreen/DrawerScreen";
 
 import RequestPrescription from "../Containers/RequestPrescription/RequestPrescription";
 import DsSanPhamDaChonScreen from "../Containers/RequestPrescription/DsSanPhamDaChonScreen";
+import DsSanPham from "../Containers/RequestPrescription/DsSanPham";
 import ScanBarcodeScreen from "../Containers/RequestPrescription/ScanBarcodeScreen";
 
 import TaoPhieuXuatKhoScreen from "../Containers/TaoPhieuXuatKho/TaoPhieuXuatKhoScreen";
@@ -78,7 +79,8 @@ export default function AppNavigator() {
         />
         <Stack.Screen name="BaoCaoScreen" component={BaoCaoScreen} />
         <Stack.Screen name="TonKhoScreen" component={TonKhoScreen} />
-        <Stack.Screen name="TheKhoScreen" component={TheKhoScreen} />
+        <Stack.Screen name="TheKhoScreen" component={DsSanPham} />
+        <Stack.Screen name="TheKho2Screen" component={TheKhoScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
