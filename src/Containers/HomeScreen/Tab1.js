@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Colors, UtillSize } from "../../Themes";
-import { Images } from "../../Themes";
+import { Colors, UtillSize, Images } from "../../Themes";
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { stringsLanguage } from "../../Language";
 import { DataShare } from "../DataShare";
 import { useIsFocused } from "@react-navigation/native";
-
 function Tab1({ navigation }) {
   const isFocused = useIsFocused();
   const listMenu = [
@@ -118,7 +116,7 @@ function Tab1({ navigation }) {
                       styles.itemMenu,
                       (i + 1) % 3 == 0 ? { marginRight: 0 } : {},
                     ]}
-                    onPress={() => navigation.navigate("RequestPrescription")}
+                    onPress={() => item.func()}
                   >
                     <View style={styles.WrapIcon}>
                       <Image source={item.icon} style={styles.imageIcon} />

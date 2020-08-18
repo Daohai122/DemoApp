@@ -30,16 +30,6 @@ import TheKhoScreen from "../Containers/TheKho/TheKhoScreen";
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-function DrawerHome() {
-  return (
-    <Drawer.Navigator
-      drawerContent={() => <DrawerContent />}
-      initialRouteName="HomeScreen"
-    >
-      <Drawer.Screen name="HomeScreen" component={HomeScreen} />
-    </Drawer.Navigator>
-  );
-}
 export default function AppNavigator() {
   return (
     <NavigationContainer>
@@ -51,7 +41,7 @@ export default function AppNavigator() {
       >
         <Stack.Screen name="SplasScreen" component={SplashScreen} />
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
-        <Stack.Screen name="HomeScreen" component={DrawerHome} />
+        <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen
           name="RequestPrescription"
           component={RequestPrescription}
