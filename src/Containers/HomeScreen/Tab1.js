@@ -4,81 +4,84 @@ import { Images } from "../../Themes";
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { stringsLanguage } from "../../Language";
 import { DataShare } from "../DataShare";
-stringsLanguage.setLanguage('vn');
+import { useIsFocused } from "@react-navigation/native";
+
 function Tab1({ navigation }) {
+  const isFocused = useIsFocused();
   const listMenu = [
     {
       icon: Images.ImageOrderRequest,
       name: stringsLanguage.de_ngi_don_thuoc,
       func: () => {
-        navigation.navigate("RequestPrescription")
+        navigation.navigate("RequestPrescription");
       },
-      permission: 'farmer, manage',
+      permission: "Farmer",
     },
     {
       icon: Images.ImageRequestList,
       name: stringsLanguage.danh_sach_de_nghi,
       func: () => {
-        navigation.navigate("DsDeNghiScreen")
+        navigation.navigate("DsDeNghiScreen");
       },
-      permission: 'farmer',
+      permission: "Farmer, Manager",
     },
     {
       icon: Images.ImageDelivery,
       name: stringsLanguage.hang_cho_ve_kho,
       func: () => {
-        navigation.navigate("DsChoNhanHangScreen")
+        navigation.navigate("DsChoNhanHangScreen");
       },
-      permission: 'farmer',
+      permission: "Farmer, Manager",
     },
     {
       icon: Images.ImageNewProduct,
       name: stringsLanguage.nhap_kho,
       func: () => {
-        navigation.navigate("NhapKhoTheoDonThuocScreen")
+        navigation.navigate("NhapKhoTheoDonThuocScreen");
       },
-      permission: 'farmer',
+      permission: "Farmer",
     },
     {
       icon: Images.ImageExportStock,
       name: stringsLanguage.xuat_kho,
       func: () => {
-        navigation.navigate("TaoPhieuXuatKhoScreen")
+        navigation.navigate("TaoPhieuXuatKhoScreen");
       },
-      permission: 'farmer',
+      permission: "Farmer",
     },
     {
       icon: Images.ImageOrder,
       name: stringsLanguage.phieu_nhap_xuat,
       func: () => {
-        navigation.navigate("DsPhieuNhapXuatKhoScreen")
+        navigation.navigate("DsPhieuNhapXuatKhoScreen");
       },
-      permission: 'farmer',
+      permission: "Farmer, Manager",
     },
     {
       icon: Images.ImageReportCard,
       name: stringsLanguage.the_kho,
       func: () => {
-        navigation.navigate("TheKhoScreen")
+        navigation.navigate("TheKhoScreen");
       },
-      permission: 'farmer',
-    }, {
+      permission: "Farmer, Manager",
+    },
+    {
       icon: Images.ImageWareHouse,
       name: stringsLanguage.ton_kho,
       func: () => {
-        navigation.navigate("TonKhoScreen")
+        navigation.navigate("TonKhoScreen");
       },
-      permission: 'farmer',
+      permission: "Farmer, Manager",
     },
     {
       icon: Images.ImageBusinessReport,
       name: stringsLanguage.bao_cao,
       func: () => {
-        navigation.navigate("BaoCaoScreen")
+        navigation.navigate("BaoCaoScreen");
       },
-      permission: 'farmer',
-    }
-  ]
+      permission: "Farmer, Manager",
+    },
+  ];
   return (
     <View style={{ flex: 1, backgroundColor: "#fff" }}>
       <View style={{ marginHorizontal: 10, marginTop: 10 }}>
@@ -105,28 +108,25 @@ function Tab1({ navigation }) {
           </View>
         </View>
         <View style={{ marginTop: 25 }}>
-          <View
-            style={{ flexDirection: 'row', flexWrap: 'wrap' }}
-          >
+          <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
             {listMenu.map((item, i) => {
-              if(item.permission.indexOf(DataShare.permission) !== -1) {
+              if (item.permission.indexOf(DataShare.permission) !== -1) {
                 return (
-                
-                  <TouchableOpacity key={i}
-                    style={[styles.itemMenu, (i + 1) % 3 == 0 ? { marginRight: 0 } : {}]}
+                  <TouchableOpacity
+                    key={i}
+                    style={[
+                      styles.itemMenu,
+                      (i + 1) % 3 == 0 ? { marginRight: 0 } : {},
+                    ]}
                     onPress={() => navigation.navigate("RequestPrescription")}
                   >
                     <View style={styles.WrapIcon}>
-                      <Image
-                        source={item.icon}
-                        style={styles.imageIcon}
-                      />
+                      <Image source={item.icon} style={styles.imageIcon} />
                     </View>
                     <Text style={styles.ItemText}>{item.name}</Text>
                   </TouchableOpacity>
-                )
-              } 
-              
+                );
+              }
             })}
           </View>
         </View>
@@ -150,8 +150,8 @@ const styles = StyleSheet.create({
       height: 1,
       width: 0,
     },
-    marginRight: '5%',
-    marginTop: 15
+    marginRight: "5%",
+    marginTop: 15,
   },
   ItemIcon: {
     color: Colors.mainColor,

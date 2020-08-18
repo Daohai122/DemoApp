@@ -5,7 +5,7 @@ import {
   StatusBar,
   View,
   TouchableOpacity,
-  Keyboard
+  Keyboard,
 } from "react-native";
 import { Input } from "react-native-elements";
 import { Icon } from "native-base";
@@ -13,9 +13,9 @@ import { NavHeader } from "../../Components/Header";
 import { StackActions } from "@react-navigation/native";
 
 import { DataShare } from "../DataShare";
-import * as Animatable from 'react-native-animatable';
+import * as Animatable from "react-native-animatable";
 function LoginScreen({ navigation }) {
-  const mesLoginFail = 'Tài khoản hoặc mật khẩu không chính xác!';
+  const mesLoginFail = "Tài khoản hoặc mật khẩu không chính xác!";
   const [login, ChangeLogin] = useState({ UserName: "", PassWord: "" });
   const [showKeyboard, ChangeShowKeyboard] = useState(false);
   const openKeyboard = () => {
@@ -26,11 +26,11 @@ function LoginScreen({ navigation }) {
     this.ViewAnimateTextTitle.transitionTo({ fontSize: 55 });
     // this.ViewAnimateTextDes.transitionTo({ fontSize: UtillSize.smallFontSize });
     ChangeShowKeyboard(true);
-  }
+  };
 
   useEffect(() => {
     const keyboardDidHideListener = Keyboard.addListener(
-      'keyboardDidHide',
+      "keyboardDidHide",
       () => {
         this.ViewAnimate.transitionTo({ flex: 0.5 });
         this.ViewAnimateTextTitle.transitionTo({ fontSize: 75 });
@@ -44,18 +44,16 @@ function LoginScreen({ navigation }) {
     };
   }, []);
   const handerChange = (value, name) => {
-    if (name == 'UserName' && value.indexOf('quanly' != -1)) {
-      DataShare.permission = 'manage'
-    };
+    if (name == "UserName") {
+      DataShare.permission = value;
+    }
     ChangeLogin((prevState) => ({
       ...prevState,
       [name]: value,
     }));
   };
   const demoCallApi = async () => {
-    navigation.dispatch(
-      StackActions.replace('HomeScreen')
-    );
+    navigation.dispatch(StackActions.replace("HomeScreen"));
   };
 
   return (
@@ -63,45 +61,56 @@ function LoginScreen({ navigation }) {
       <StatusBar barStyle="light-content" />
       <NavHeader />
       <View style={styles.Container}>
-        <Animatable.View ref={(ref) => this.ViewAnimate = ref} style={[styles.wrapHeader, { flex: showKeyboard ? 0.2 : 0.5 }]}>
-          <Animatable.Text ref={(ref) => this.ViewAnimateTextTitle = ref} style={[styles.textTitleHeader, { fontSize: showKeyboard ? 55 : 75 }]}>siten</Animatable.Text>
+        <Animatable.View
+          ref={(ref) => (this.ViewAnimate = ref)}
+          style={[styles.wrapHeader, { flex: showKeyboard ? 0.2 : 0.5 }]}
+        >
+          <Animatable.Text
+            ref={(ref) => (this.ViewAnimateTextTitle = ref)}
+            style={[
+              styles.textTitleHeader,
+              { fontSize: showKeyboard ? 55 : 75 },
+            ]}
+          >
+            siten
+          </Animatable.Text>
           {/* <Animatable.Text ref={(ref) => this.ViewAnimateTextDes = ref} style={[styles.textDesHeader, { fontSize: showKeyboard ? UtillSize.memSizeText : UtillSize.smallFontSize }]}>ASSITANT</Animatable.Text> */}
         </Animatable.View>
         <View style={styles.wrapViewContent}>
           <View style={styles.viewInput}>
             <Input
-              placeholder='Your email'
-              placeholderTextColor='#fff'
+              placeholder="Your email"
+              placeholderTextColor="#fff"
               inputContainerStyle={{ borderBottomWidth: 0 }}
-              inputStyle={{ color: '#fff' }}
+              inputStyle={{ color: "#fff" }}
               value={login.UserName}
-              onChangeText={(e) => handerChange(e, 'UserName')}
+              onChangeText={(e) => handerChange(e, "UserName")}
               onFocus={() => openKeyboard()}
               leftIcon={
                 <Icon
-                  type='EvilIcons'
-                  name='user'
-                  style={{ color: '#fff', fontSize: 35 }}
+                  type="EvilIcons"
+                  name="user"
+                  style={{ color: "#fff", fontSize: 35 }}
                 />
               }
             />
           </View>
           <View style={styles.viewInput}>
             <Input
-              placeholder='Your password'
+              placeholder="Your password"
               value={login.PassWord}
-              onChangeText={(e) => handerChange(e, 'PassWord')}
+              onChangeText={(e) => handerChange(e, "PassWord")}
               secureTextEntry
-              placeholderTextColor='#fff'
+              placeholderTextColor="#fff"
               inputContainerStyle={{ borderBottomWidth: 0 }}
-              inputStyle={{ color: '#fff' }}
+              inputStyle={{ color: "#fff" }}
               onFocus={() => openKeyboard()}
               leftIcon={
                 <Icon
-                  name='lock'
+                  name="lock"
                   size={24}
-                  type='EvilIcons'
-                  style={{ color: '#fff', fontSize: 35 }}
+                  type="EvilIcons"
+                  style={{ color: "#fff", fontSize: 35 }}
                 />
               }
             />
@@ -111,7 +120,10 @@ function LoginScreen({ navigation }) {
               <Text style={styles.textForGot}>Forgot your password?</Text>
             </TouchableOpacity>
           </View>
-          <TouchableOpacity style={styles.ButtonLogin} onPress={(() => demoCallApi())}>
+          <TouchableOpacity
+            style={styles.ButtonLogin}
+            onPress={() => demoCallApi()}
+          >
             <Text style={styles.textLogin}>Login</Text>
           </TouchableOpacity>
         </View>
